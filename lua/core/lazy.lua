@@ -17,6 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = {
         { import = "interface"},
+        {import = "lang"},
     },
     default = {
         lazy = true,
