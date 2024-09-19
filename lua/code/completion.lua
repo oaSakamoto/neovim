@@ -11,6 +11,7 @@ return {
             "saadparwaiz1/cmp_luasnip",
         },
         config = function()
+            require "snippets"
             vim.opt.completeopt = {"menu", "menuone","noselect","popup"}
             vim.opt.shortmess:append "c"
 
