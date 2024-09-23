@@ -9,9 +9,13 @@ local fmt = require("luasnip.extras.fmt").fmt
 
 ls.add_snippets ("lua", {
     s("rp" , fmt([[
-    return {{ 
-        lazy={}
+    return {{
+        "{}",
+        dependecies = {{{}}},
+        lazy = {},
+        config = function(_, opts)
+            {}
+        end,
     }}
-    ]], {i(1)})),
+    ]], {i(1), i(2), i(3, "false"), i(4)})),
 })
-
