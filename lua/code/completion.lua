@@ -17,7 +17,6 @@ return {
 
             local lspkind = require "lspkind"
             lspkind.init {}
-            
             local cmp = require "cmp"
             cmp.setup {
                 sources = {
@@ -25,7 +24,6 @@ return {
                     {name = "luasnip"},
                     { name = "path"},
                 },
-                
                 mapping = {
                     ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Isert },
                     ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Isert },
