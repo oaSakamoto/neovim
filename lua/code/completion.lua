@@ -28,7 +28,7 @@ return {
                     ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Isert },
                     ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Isert },
                     ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<C-y>"] = cmp.mapping(
+                    ["<C-a>"] = cmp.mapping(
                     cmp.mapping.confirm {
                         behavior = cmp.ConfirmBehavior.Insert,
                         select = true,
