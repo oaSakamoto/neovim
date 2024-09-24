@@ -9,6 +9,8 @@ local o = vim.opt
 
 o.number = true
 o.relativenumber = true
+o.signcolumn = "yes"
+
 o.splitbelow = true
 o.splitright = true
 
