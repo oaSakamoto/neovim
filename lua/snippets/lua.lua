@@ -18,4 +18,5 @@ ls.add_snippets ("lua", {
         end,
     }}
     ]], {i(1), i(2), i(3, "false"), i(4)})),
+    s("lv" , fmt("local {} = {}",{i(1),i(2)}))
 })
