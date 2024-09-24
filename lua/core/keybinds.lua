@@ -1,11 +1,9 @@
 local wk = require "which-key"
-local harpoon = require "harpoon"
-local harpoon_telescope = require "util.harpoon_telescope".toggle_telescope
-
 local l = "<leader>"
 
-
 --harpoon keys
+local harpoon = require "harpoon"
+local harpoon_telescope = require "util.harpoon_telescope".toggle_telescope
 local lh = l .. "h"
 local lhr = lh .. "r"
 wk.add({
@@ -26,4 +24,9 @@ wk.add({
         { lhr .. "[", function() harpoon:list():replace_at(3) end, desc = "Replace Third buffer",},
         { lhr .. "=", function() harpoon:list():replace_at(4) end, desc = "Replace Fourth buffer",},
      },
+})
+
+-- lazy git
+wk.add({
+    { l .. "g", function() vim.cmd("LazyGit") end, desc = "LazyGit" },
 })
