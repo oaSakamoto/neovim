@@ -78,47 +78,14 @@ return {
 		},
 		config = function(_, opts)
 			local telescope = require("telescope")
-			local themes = require("telescope.themes")
 			local builtin = require("telescope.builtin")
 			local map = vim.keymap.set
 			local harpoon = require("harpoon")
-			local conf = require("telescope.config").values
 
             harpoon:setup({})
 			telescope.setup(opts)
 			pcall(telescope.load_extension("file_browser"))
 			pcall(telescope.load_extension("ui-select"))
-
-
-			local function toggle_telescope(harpoon_files)
-				local file_paths = vim.tbl_map(function(item) return item.value end, harpoon_files.items)
-                local function get_index(tbl, value)
-                    for i, v in ipairs(tbl) do
-                        if v == value then
-                            return i
-                        end
-                    end
-                    return nil  -- Retorna nil se não encontrar o valor
-                end
-                require("telescope.pickers").new({},themes.get_dropdown({
-                    prompt_title = "Harpoon",
-                    finder = require("telescope.finders").new_table({
-                        results = file_paths,
-                        entry_maker = function(entry)
-                            local index = get_index(file_paths, entry)
-                            return {
-                                value = entry,
-                                display = function() return string.format("%d. %s", index, entry) end, 
-                                ordinal = entry,
-                                index = index,
-                            }
-                        end,
-                    }),
-                    previewer = false,
-                    sorter = conf.generic_sorter({}),
-                })):find()
-            end
-
 			-- builtin keymaps
 			map("n", "<leader>ts", builtin.find_files, { desc = "[T]elescope [S]earch files" })
 			map("n", "<leader>tk", builtin.keymaps, { desc = "[T]elescope [K]eymaps" })
@@ -160,20 +127,6 @@ return {
 				})
 			end, { desc = "[T]elescope File Browser [C]urrent" })
 
-            --harpoon
-            map("n", "<leader><leader>", function()
-				toggle_telescope(harpoon:list())
-			end, { desc = "Open harpoon window" })
-			map("n", "<leader>ha", function()
-				harpoon:list():add()
-			end)
-			map("n", "<leader>hc", function()
-				harpoon:list():clear()
-			end)
-            map("n", "<leader>(", function() harpoon:list():select(1) end, {desc = "First buffer"})
-            map("n", "<leader>{", function() harpoon:list():select(2) end, {desc = "Second buffer"})
-            -- map("n", "<C-[>", function() harpoon:list():select(3) end)
-            -- map("n", "<C->", function() harpoon:list():select(4) end)	
 		end,
 	},
 }
