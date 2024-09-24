@@ -30,8 +30,12 @@ return {
 		},
 		cmd = "Telescope",
 		opts = {
+            pickers = {
+                find_files = {
+                    initial_mode = "insert",
+                },
+            },
 			defaults = {
-				initial_mode = "normal",
 				prompt_prefix = "   ",
 				selection_caret = "  ",
 				entry_prefix = "  ",
@@ -57,6 +61,7 @@ return {
 			},
 			extensions = {
 				file_browser = {
+                    initial_mode = "normal",
 					hijack_netrw = true,
 					hidden = true,
 					grouped = true,
@@ -114,12 +119,11 @@ return {
                 })):find()
             end
 
-			
 			-- builtin keymaps
-			map("n", "<leader>tf", builtin.find_files, { desc = "[T]elescope [F]iles" })
+			map("n", "<leader>ts", builtin.find_files, { desc = "[T]elescope [S]earch files" })
 			map("n", "<leader>tk", builtin.keymaps, { desc = "[T]elescope [K]eymaps" })
 			map("n", "<leader>th", builtin.help_tags, { desc = "[T]elescope [H]elp" })
-			map("n", "<leader>ts", builtin.builtin, { desc = "[T]elescope [S]elect Telescope" })
+			map("n", "<leader>tp", builtin.builtin, { desc = "[T]elescope Select [P]ickers" })
 			map("n", "<leader>tw", builtin.grep_string, { desc = "[T]elescope current [W]ord" })
 			map("n", "<leader>tg", builtin.live_grep, { desc = "[T]elescope by [G]rep" })
 			map("n", "<leader>td", builtin.diagnostics, { desc = "[T]elescope [D]iagnostics" })
@@ -163,11 +167,11 @@ return {
 			map("n", "<leader>ha", function()
 				harpoon:list():add()
 			end)
-			map("n", "<leader>hr", function()
-				harpoon:list():remove()
+			map("n", "<leader>hc", function()
+				harpoon:list():clear()
 			end)
-            -- map("n", "<leader>(>", function() harpoon:list():select(1) end)
-            -- map("n", "<leader>{", function() harpoon:list():select(2) end)
+            map("n", "<leader>(", function() harpoon:list():select(1) end, {desc = "First buffer"})
+            map("n", "<leader>{", function() harpoon:list():select(2) end, {desc = "Second buffer"})
             -- map("n", "<C-[>", function() harpoon:list():select(3) end)
             -- map("n", "<C->", function() harpoon:list():select(4) end)	
 		end,
