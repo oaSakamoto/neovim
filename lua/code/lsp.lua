@@ -28,5 +28,12 @@ return {
 			automatic_installation = true,
 		})
 		require("mason-lspconfig").setup_handlers(opts.handlers)
+        vim.diagnostic.config({
+            virtual_text = true, -- Desativa os diagnósticos virtuais (inline)
+            signs = true,        -- Desativa os sinais na coluna lateral
+            underline = true,    -- Desativa sublinhado em diagnósticos
+            update_in_insert = true, -- Não mostra diagnósticos durante inserção
+            severity_sort = false,    -- Não ordena por severidade
+        })
 	end,
 }
