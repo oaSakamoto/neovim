@@ -1,3 +1,7 @@
+local workspace = "~/.grimorio"
+-- function keynormal()
+--
+-- end
 return {
     {
         "nvim-treesitter/nvim-treesitter",
@@ -33,10 +37,10 @@ return {
                     ["core.dirman"] = {
                         config = {
                             workspaces = {
-                                grimorio = "~/.grimorio",
-                                projetos = "~/.grimorio/00-projetos",
-                                assuntos = "~/.grimorio/01-assuntos",
-                                recursos = "~/.grimorio/02-recursos",
+                                grimorio = workspace,
+                                projetos = workspace .. "00-projetos",
+                                assuntos = workspace .. "01-assuntos",
+                                recursos = workspace .. "02-recursos",
                             },
                             default_workspaces = "grimorio",
                             index = "index.norg",
@@ -44,6 +48,7 @@ return {
                     },
                 },
             })
+
         end,
     },
 }
