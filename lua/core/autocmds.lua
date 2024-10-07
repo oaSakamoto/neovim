@@ -30,3 +30,44 @@ vim.api.nvim_create_autocmd({"CursorMoved","CursorMovedI", "InsertChange","Diagn
         end
     end
 })
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+  pattern = {'docker-compose.yaml','docker-compose.yml','compose.yaml', 'compose.yml'},
+  callback = function()
+    vim.bo.filetype = "yaml.docker-compose"
+  end
+})
+
+-- ftplugin
+-- typescript
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = 'typescript',
+    callback = function ()
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+    end
+})
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = 'typescriptreact',
+    callback = function ()
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+    end
+})
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = 'norg',
+    callback = function ()
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.keymap.set('n', '<leader>nt', ':Neorg toc right<CR>', {
+            buffer = 0,  -- Aplica apenas ao buffer atual
+            silent = true,
+            noremap = true,
+            desc = "Neorg: Abrir índice à direita"
+        })
+
+        vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { buffer=0, noremap=true, expr = true, silent = true })
+        vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { buffer=0, noremap=true, expr = true, silent = true })
+    end
+})
