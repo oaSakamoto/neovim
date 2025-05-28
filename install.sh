@@ -1,4 +1,4 @@
-CONFIG=~/.config/vi
+CONFIG=~/.config/nvim
 rm -rf $CONFIG
 mkdir -p $CONFIG
 stow --restow --target=$CONFIG .

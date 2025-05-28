@@ -1,4 +1,4 @@
-require("core.options")
-require("core.autocmds")
-require("core.lazy")
-require("core.keybinds")
+require('config.options')
+-- require("core.autocmds")
+require('config.keymaps')
+require('core.lazy')
